@@ -8,7 +8,8 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
   products: any;
-  charts: any[] = [];
+  carts: any[] = [];
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -18,8 +19,19 @@ export class AppComponent {
     });
   }
 
-  onAddToChart(product: any) {
-    this.charts.push(product);
-    console.log(product);
+  onAddToCart(product: any) {
+    this.carts.push(product);
+  }
+
+  onRemoveFromCart(index: number) {
+    this.carts.splice(index, 1);
+  }
+
+  calculateTotalPrice(): number {
+    let totalPrice = 0;
+    for (const item of this.carts) {
+      totalPrice += item.price;
+    }
+    return totalPrice;
   }
 }

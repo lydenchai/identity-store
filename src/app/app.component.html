@@ -5,16 +5,35 @@
       <div class="card-item" *ngFor="let product of products">
         <div class="card-body">
           <img class="card-img" src="{{ product?.image }}" alt="" />
-          <div style="padding: 5%; display: grid; gap: 10px">
-            <h4 class="card-title center">{{ product?.title }}</h4>
+          <div class="grid gap-[10px] p-[5%]">
+            <h4 class="card-title font-bold">{{ product?.title }}</h4>
             <p class="card-text">${{ product?.price }}</p>
             <p class="card-text">{{ product?.category }}</p>
-            <div class="btn" (click)="onAddToChart(product)">Add to Chart</div>
+            <div class="btn" (click)="onAddToCart(product)">Add to Cart</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="chart">Your Chart</div>
+    <div class="chart">
+      <h2 class="text-[24px] font-normal">Your Cart</h2>
+      <p *ngIf="carts.length < 1">Your chart is empty</p>
+      <div *ngFor="let item of carts; let i = index">
+        <div class="flex items-center justify-between w-full">
+          <div>{{ i + 1 }} - {{ item?.title }} - ${{ item?.price }}</div>
+          <button
+            class="remove-btn rounded-full bg-green-500 flex items-center justify-center text-white text-[20px]"
+            (click)="onRemoveFromCart(i)"
+          >
+            -
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-between w-full font-bold">
+        <div>Total:</div>
+        <div>${{ calculateTotalPrice() | number: "1.1-2" }}</div>
+      </div>
+      <div class="btn">Checkout</div>
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>
