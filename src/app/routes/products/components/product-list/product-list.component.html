@@ -1,0 +1,64 @@
+<div class="product-content">
+  <div class="cards">
+    <div class="card-item" *ngFor="let product of products">
+      <div class="card-body">
+        <img
+          class="card-img cursor-pointer"
+          src="{{ product?.image }}"
+          alt=""
+          [routerLink]="product.id"
+        />
+        <div class="grid gap-[10px] p-[5%]">
+          <div [routerLink]="product.id" class="cursor-pointer">
+            <h4 class="card-title text-[20px] font-medium">
+              {{ product?.title }}
+            </h4>
+            <p class="card-text text-[16px]">{{ product?.category }}</p>
+            <p class="card-text text-[16px]">Price: ${{ product?.price }}</p>
+          </div>
+          <button
+            mat-raised-button
+            class="btn text-[16px] font-medium"
+            (click)="onAddToCart(product)"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chart">
+    <h2 class="text-[24px] font-medium">Your Cart</h2>
+    <p *ngIf="carts.length < 1" class="text-[16px]">Your chart is empty.</p>
+    <div *ngFor="let item of carts; let i = index">
+      <div class="flex w-full items-center justify-between">
+        <div class="text-[16px]">
+          {{ i + 1 }} - {{ item?.title }} - ${{ item?.price }}
+        </div>
+        <button
+          class="remove-btn flex items-center justify-center rounded-full bg-green-500 text-[20px] text-white"
+          (click)="onRemoveFromCart(i)"
+        >
+          -
+        </button>
+      </div>
+    </div>
+    <div class="flex w-full justify-between font-bold">
+      <div class="text-[16px]">Total:</div>
+      <div class="text-[16px]">
+        ${{ calculateTotalPrice() | number: "1.1-2" }}
+      </div>
+    </div>
+    <button
+      mat-raised-button
+      [disabled]="carts.length === 0"
+      [ngStyle]="{
+        'background-color': carts.length === 0 ? 'lightgray' : '#37a4ec'
+      }"
+      class="checkout-btn text-[16px] font-medium"
+      (click)="onCheckout()"
+    >
+      Checkout
+    </button>
+  </div>
+</div>

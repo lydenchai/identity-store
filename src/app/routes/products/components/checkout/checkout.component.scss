@@ -1,0 +1,51 @@
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+}
+
+::ng-deep .custom .mat-dialog-container {
+  border-radius: 20px !important;
+}
+
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px !important;
+}
+
+.btn {
+  width: 25%;
+  height: 38px;
+  cursor: pointer;
+  color: #ffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #0d90e7;
+  }
+}
+
+.cancel-btn {
+  width: 25%;
+  height: 38px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff5a5a;
+
+  &:hover {
+    background: #f84949;
+  }
+}

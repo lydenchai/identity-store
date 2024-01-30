@@ -1,0 +1,36 @@
+<div class="custom" style="border-radius: 20px">
+  <mat-dialog-content>
+    <div class="checkout-container text-black">
+      <h1 class="text-[22px] font-bold">Confirm your purchase?</h1>
+      <div>
+        Your cart contains {{ data.length }} item{{
+          data.length !== 1 ? "s" : ""
+        }}
+      </div>
+      <div class="flex items-center">
+        Total price:
+        <div class="ms-1 font-bold">
+          ${{ calculateTotalPrice() | number: "1.2-2" }}
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="buttons">
+      <button
+        mat-stroked-button
+        class="cancel-btn"
+        (click)="this.dialogRef.close()"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        class="btn bg-[#37a4ec]"
+        type="submit"
+        (click)="onConfirm()"
+      >
+        Confirm
+      </button>
+    </div></mat-dialog-content
+  >
+</div>
