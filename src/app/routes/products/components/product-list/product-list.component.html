@@ -51,10 +51,7 @@
     </div>
     <button
       mat-raised-button
-      [disabled]="carts.length === 0"
-      [ngStyle]="{
-        'background-color': carts.length === 0 ? 'lightgray' : '#37a4ec'
-      }"
+      [disabled]="carts.length < 1"
       class="checkout-btn text-[16px] font-medium"
       (click)="onCheckout()"
     >
