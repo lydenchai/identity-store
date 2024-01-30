@@ -9,21 +9,21 @@
           [routerLink]="product.id"
         />
         <div class="grid gap-[10px] p-[5%]">
-          <div [routerLink]="product.id" class="cursor-pointer">
+          <div [routerLink]="product.id" class="relative cursor-pointer">
             <h4 class="card-title text-[20px] font-medium">
               {{ product?.title }}
             </h4>
             <p class="card-text text-[16px]">{{ product?.category }}</p>
             <p class="card-text text-[16px]">Price: ${{ product?.price }}</p>
           </div>
-          <button
-            mat-raised-button
-            class="btn text-[16px] font-medium"
-            (click)="onAddToCart(product)"
-          >
-            Add to Cart
-          </button>
         </div>
+        <button
+          mat-raised-button
+          class="btn text-[16px] font-medium"
+          (click)="onAddToCart(product)"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
           class="remove-btn flex items-center justify-center rounded-full bg-green-500 text-[20px] text-white"
           (click)="onRemoveFromCart(i)"
         >
-          -
+          <mat-icon>remove</mat-icon>
         </button>
       </div>
     </div>

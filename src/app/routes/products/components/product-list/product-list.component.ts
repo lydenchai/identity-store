@@ -1,7 +1,9 @@
+import { LocalStorageService } from './../../../../services/local-storage.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product.service';
 import { CheckoutComponent } from '../checkout/checkout.component';
+import { LocalStorageEnum } from 'src/app/models/enums/local-storage.enum';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +13,10 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 export class ProductListComponent {
   products: any;
   carts: any[] = [];
-  productsSelected: any[] = [];
 
   constructor(
     private productService: ProductService,
+    private localStorageService: LocalStorageService,
     public dialog: MatDialog,
   ) {}
 
@@ -22,14 +24,22 @@ export class ProductListComponent {
     this.productService.getProducts().subscribe((response) => {
       this.products = response;
     });
+
+    // const storedCarts = this.localStorageService.getArray(
+    //   LocalStorageEnum.product,
+    // );
+    // this.carts = storedCarts ? storedCarts : [];
+    // console.log(this.carts);
   }
 
   onAddToCart(product: any) {
     this.carts.push(product);
+    // this.localStorageService.setArray(LocalStorageEnum.product, this.carts);
   }
 
   onRemoveFromCart(index: number) {
     this.carts.splice(index, 1);
+    // this.localStorageService.setArray(LocalStorageEnum.product, this.carts);
   }
 
   calculateTotalPrice(): number {
