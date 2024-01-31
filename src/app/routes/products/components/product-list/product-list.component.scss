@@ -5,6 +5,28 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 968px) {
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1% 2.5% !important;
+  }
+
+  .cards {
+    width: 100% !important;
+  }
+
+  .cart {
+    width: 40% !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cart {
+    width: auto !important;
+  }
+}
+
 .cards {
   width: 74.5%;
   display: flex;
@@ -48,11 +70,10 @@
   border-radius: 8px 8px 0 0;
 }
 
-.card-title {
-  max-width: 300px !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap;
+.text-ellipsis {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .btn {
@@ -100,7 +121,7 @@
   }
 }
 
-.chart {
+.cart {
   display: flex;
   flex-direction: column;
   background: #ffffffeb;

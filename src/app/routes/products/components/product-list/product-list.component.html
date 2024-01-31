@@ -8,13 +8,22 @@
           alt=""
           [routerLink]="product.id"
         />
-        <div class="grid gap-[10px] p-[5%]">
-          <div [routerLink]="product.id" class="relative cursor-pointer">
-            <h4 class="card-title text-[20px] font-medium">
+        <div class="grid w-full gap-[10px] p-[5%]">
+          <div
+            [routerLink]="product.id"
+            class="max-w-full cursor-pointer overflow-hidden whitespace-nowrap"
+          >
+            <div
+              class="md:text[16px] text-ellipsis text-[20px] font-medium md:h-auto"
+            >
               {{ product?.title }}
-            </h4>
-            <p class="card-text text-[16px]">{{ product?.category }}</p>
-            <p class="card-text text-[16px]">Price: ${{ product?.price }}</p>
+            </div>
+            <div class="card-text md:text[14px] text-[16px]">
+              {{ product?.category }}
+            </div>
+            <div class="card-text md:text[14px] text-[16px]">
+              Price: ${{ product?.price }}
+            </div>
           </div>
         </div>
         <button
@@ -27,16 +36,20 @@
       </div>
     </div>
   </div>
-  <div class="chart">
+  <div class="cart">
     <h2 class="text-[24px] font-medium">Your Cart</h2>
-    <p *ngIf="carts.length < 1" class="text-[16px]">Your chart is empty.</p>
+    <p *ngIf="carts.length < 1" class="text-[16px]">Your cart is empty.</p>
     <div *ngFor="let item of carts; let i = index">
       <div class="flex w-full items-center justify-between">
-        <div class="text-[16px]">
-          {{ i + 1 }} - {{ item?.title }} - ${{ item?.price }}
+        <div
+          class="flex max-w-[85%] items-center overflow-hidden whitespace-nowrap text-[16px]"
+        >
+          {{ i + 1 }} -
+          <div class="text-ellipsis">{{ item?.title }}</div>
+          - ${{ item?.price }}
         </div>
         <button
-          class="remove-btn flex items-center justify-center rounded-full bg-green-500 text-[20px] text-white"
+          class="remove-btn flex items-center justify-center rounded-full bg-red-500 text-[20px] text-white"
           (click)="onRemoveFromCart(i)"
         >
           <mat-icon>remove</mat-icon>

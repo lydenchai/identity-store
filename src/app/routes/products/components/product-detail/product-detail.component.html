@@ -2,16 +2,16 @@
   <button
     mat-raised-button
     (click)="onBack()"
-    class="flex h-[33px] w-[85px] items-center justify-center rounded-[20px] text-[14px] font-bold hover:bg-white"
+    class="mt-[10px] flex h-[33px] w-[85px] items-center justify-center rounded-[20px] text-[14px] font-bold hover:bg-white"
     style="background-color: #f6f6f6; color: #666666; border: 1px solid #f3f3f3"
   >
     <mat-icon class="me-1">keyboard_backspace</mat-icon>Back
   </button>
-  <div class="product-detail">
-    <div class="zoom-photo">
+  <div class="product-detail md:flex-col">
+    <div class="zoom-photo md:w-full">
       <img src="{{ product?.image }}" alt="Loading..." />
     </div>
-    <div class="detail">
+    <div class="detail md:w-full">
       <h1 class="text-[30px] font-bold">{{ product?.title }}</h1>
       <br />
       <div class="text-[20px]">Description: {{ product?.description }}</div>
