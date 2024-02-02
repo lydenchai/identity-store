@@ -1,4 +1,4 @@
-.content {
+.sub-content {
   width: 100%;
   padding: 2% 5%;
 }
@@ -18,18 +18,22 @@
   flex-direction: column;
   gap: 10px;
 }
+
 @media screen and (max-width: 768px) {
   .product-detail {
     margin-top: 25px !important;
   }
+
   .zoom-photo {
     width: 100% !important;
   }
+
   .detail {
     width: 100% !important;
     margin-top: 20px !important;
   }
 }
+
 .zoom-photo {
   width: 30%;
   max-height: 70vh;
