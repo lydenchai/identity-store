@@ -1,6 +1,53 @@
 <div class="container">
   <header class="font-bold">
-    <mat-icon class="me-2">local_mall</mat-icon>The Identity Store
+    <div>
+      <mat-icon class="me-2">local_mall</mat-icon>{{ "title" | translate }}
+    </div>
+    <div>
+      <mat-select
+        [value]="translateService.currentLang"
+        class="select-language my-select"
+        (selectionChange)="translateService.use($event.value)"
+      >
+        <mat-select-trigger
+          class="select-trigger"
+          *ngIf="translateService.currentLang != undefined"
+        >
+          <div class="flex items-center">
+            <img
+              class=""
+              [src]="
+                translateService.currentLang == 'en'
+                  ? '/assets/imgs/eng-flag.svg'
+                  : '/assets/imgs/khm-flag.svg'
+              "
+            />
+            <div class="ms-2 text-[13px] text-white">
+              {{ translateService.currentLang == "en" ? "ENG" : "KHM" }}
+            </div>
+          </div>
+        </mat-select-trigger>
+        <mat-option
+          *ngFor="let lang of translateService.getLangs()"
+          [value]="lang"
+          (click)="changeLanguagePreference(lang)"
+        >
+          <div class="flex items-center">
+            <img
+              class="flag"
+              [src]="
+                lang == 'en'
+                  ? '/assets/imgs/eng-flag.svg'
+                  : '/assets/imgs/khm-flag.svg'
+              "
+            />
+            <div class="ms-2 text-[13px] text-black">
+              {{ lang == "en" ? "ENG" : "KHM" }}
+            </div>
+          </div>
+        </mat-option>
+      </mat-select>
+    </div>
   </header>
   <div class="content">
     <router-outlet></router-outlet>

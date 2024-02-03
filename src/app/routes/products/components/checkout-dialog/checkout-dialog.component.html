@@ -1,14 +1,15 @@
 <div class="custom">
   <mat-dialog-content>
     <div class="checkout-container text-black">
-      <h1 class="text-[22px] font-bold">Confirm your purchase?</h1>
+      <h1 class="text-[22px] font-bold">
+        {{ "confirm your purchase" | translate }}
+      </h1>
       <div>
-        Your cart contains {{ data.length }} item{{
-          data.length !== 1 ? "s" : ""
-        }}
+        {{ "your cart contains" | translate }} {{ data.length }}
+        {{ "item" | translate }}{{ data.length !== 1 && letterS ? "s" : "" }}
       </div>
       <div class="flex items-center">
-        Total price:
+        {{ "total price" | translate }}:
         <div class="ms-1 font-bold">
           ${{ calculateTotalPrice() | number: "1.2-2" }}
         </div>
@@ -21,7 +22,7 @@
         class="cancel-btn"
         (click)="this.dialogRef.close()"
       >
-        Cancel
+        {{ "cancel" | translate }}
       </button>
       <button
         mat-raised-button
@@ -29,7 +30,7 @@
         type="submit"
         (click)="onConfirm()"
       >
-        Confirm
+        {{ "confirm" | translate }}
       </button>
     </div>
   </mat-dialog-content>

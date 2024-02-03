@@ -18,8 +18,9 @@
   <button
     mat-raised-button
     class="btn text-[16px] font-medium"
-    (click)="onAddToCart(product)"
+    (click)="onAddToCart($event, product)"
   >
-    <mat-icon class="me-2">local_grocery_store</mat-icon> Add to Cart
+    <mat-icon class="me-2">local_grocery_store</mat-icon>
+    {{ "add to cart" | translate }}
   </button>
 </div>

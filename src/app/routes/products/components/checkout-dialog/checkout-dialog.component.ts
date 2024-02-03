@@ -1,6 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Cart } from 'src/app/models/Cart';
+import { LocalStorageEnum } from 'src/app/models/enums/local-storage.enum';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-checkout-dialog',
@@ -9,12 +12,20 @@ import { Cart } from 'src/app/models/Cart';
 })
 export class CheckoutDialogComponent {
   carts: Cart[] = [];
+  letterS: boolean = false;
 
   constructor(
+    private localStorageService: LocalStorageService,
     public dialogRef: MatDialogRef<CheckoutDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.carts = [...data];
+    const currentLanguage = this.localStorageService.get(LocalStorageEnum.lang);
+    if (currentLanguage === 'en') {
+      this.letterS = true;
+    } else if (currentLanguage === 'km') {
+      this.letterS = false;
+    }
   }
 
   onConfirm() {

@@ -3,17 +3,67 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "KmReg";
+  src: url("../assets/fonts/KantumruyPro-Regular.ttf");
+}
+
+@font-face {
+  font-family: "KmMed";
+  src: url("../assets/fonts/KantumruyPro-Medium.ttf");
+}
+
+@font-face {
+  font-family: "KmSemiBold";
+  src: url("../assets/fonts/KantumruyPro-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "EngLight";
+  src: url("../assets/fonts/Quicksand-Light.ttf");
+}
+
+@font-face {
+  font-family: "EngMedium";
+  src: url("../assets/fonts/Quicksand-Medium.ttf");
+}
+
+@font-face {
+  font-family: "EngReg";
+  src: url("../assets/fonts/Quicksand-Regular.ttf");
+}
+
+@font-face {
+  font-family: "EngSemiBold";
+  src: url("../assets/fonts/Quicksand-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "EngBold";
+  src: url("../assets/fonts/Quicksand-Bold.ttf");
+}
+
+@font-face {
+  font-family: "LoraReg";
+  src: url("../assets/fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+  font-family: "LoraBold";
+  src: url("../assets/fonts/Lora-Bold.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "EngReg", "KmReg";
 }
 
 html,
 body {
   height: 100%;
   background: #ffffff;
-  font-family: "Quicksand", sans-serif;
 }
 
 .container {
@@ -28,8 +78,9 @@ header {
   background: #323232;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 26px;
-  padding-left: 20px;
+  padding: 0 20px 0 20px;
   color: aliceblue;
   position: sticky;
   top: 0;

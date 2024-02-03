@@ -10,7 +10,9 @@ export class ProductCardComponent {
   @Input() product?: Product;
   @Output() addToCartChanged = new EventEmitter();
 
-  onAddToCart(product: any) {
+  onAddToCart(event: Event, product: any): void {
+    event.preventDefault();
+    event.stopPropagation();
     this.addToCartChanged.emit(product);
   }
 }

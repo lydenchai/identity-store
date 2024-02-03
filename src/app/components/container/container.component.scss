@@ -2,3 +2,36 @@
   width: 100%;
   height: auto;
 }
+
+.select-language {
+  width: 120px;
+  height: 32px !important;
+  border-radius: 4rem;
+  padding: 0 10px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  .select-trigger {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    gap: 7px;
+  }
+}
+
+.my-select {
+  width: fit-content;
+  min-width: 120px;
+  border-radius: 10px;
+  padding: 0 10px !important;
+  text-align: center;
+}
+::ng-deep .mat-mdc-select-arrow svg {
+  color: #fff;
+}

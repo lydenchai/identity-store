@@ -5,6 +5,7 @@
         class="w-full"
         [product]="product"
         (addToCartChanged)="onAddToCart(product)"
+        [routerLink]="product.id"
       ></app-product-card>
     </div>
   </div>
