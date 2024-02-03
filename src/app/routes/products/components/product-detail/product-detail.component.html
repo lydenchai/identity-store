@@ -2,10 +2,10 @@
   <button
     mat-raised-button
     (click)="onBack()"
-    class="mt-[10px] flex h-[33px] w-[85px] items-center justify-center rounded-[20px] text-[14px] font-bold hover:bg-white"
+    class="mt-[10px] flex h-[33px] w-fit items-center justify-center rounded-[20px] px-[10px] text-[14px] font-bold hover:bg-white"
     style="background-color: #f6f6f6; color: #666666; border: 1px solid #f3f3f3"
   >
-    <mat-icon class="me-1">keyboard_backspace</mat-icon>Back
+    <mat-icon class="me-1">keyboard_backspace</mat-icon>{{ "back" | translate }}
   </button>
   <div class="product-detail md:flex-col">
     <div class="zoom-photo md:w-full">
@@ -14,18 +14,22 @@
     <div class="detail md:w-full">
       <h1 class="text-[30px] font-bold">{{ product?.title }}</h1>
       <br />
-      <div class="text-[20px]">Description: {{ product?.description }}</div>
+      <div class="text-[20px]">
+        {{ "description" | translate }}: {{ product?.description }}
+      </div>
       <br />
-      <div class="text-[20px]">Category: {{ product?.category }}</div>
+      <div class="text-[20px]">
+        {{ "category" | translate }}: {{ product?.category }}
+      </div>
       <br />
       <div class="flex items-center text-[20px]">
-        Price:
+        {{ "price" | translate }}:
         <div class="ms-2 font-bold">
           ${{ product?.price | number: "1.1-2" }}
         </div>
       </div>
       <div class="flex items-center text-[20px]">
-        Rating: {{ product?.rating?.rate }}
+        {{ "rating" | translate }}: {{ product?.rating?.rate }}
         <mat-icon class="ms-1 text-yellow-400">star_rate</mat-icon>
       </div>
     </div>

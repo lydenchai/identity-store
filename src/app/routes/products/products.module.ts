@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CheckoutDialogComponent } from './components/checkout-dialog/checkout-dialog.component';
 import { ProductCardModule } from 'src/app/shares/product-card/product-card.module';
 import { CartModule } from 'src/app/shares/cart/cart.module';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     ProductListComponent,
@@ -22,6 +23,7 @@ import { CartModule } from 'src/app/shares/cart/cart.module';
     MatDialogModule,
     ProductCardModule,
     CartModule,
+    TranslateModule,
   ],
 })
 export class ProductsModule {}
