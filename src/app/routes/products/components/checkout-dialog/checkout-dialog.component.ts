@@ -1,16 +1,17 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Cart } from 'src/app/models/Cart';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
+  selector: 'app-checkout-dialog',
+  templateUrl: './checkout-dialog.component.html',
+  styleUrls: ['./checkout-dialog.component.scss'],
 })
-export class CheckoutComponent {
-  carts: any[] = [];
+export class CheckoutDialogComponent {
+  carts: Cart[] = [];
 
   constructor(
-    public dialogRef: MatDialogRef<CheckoutComponent>,
+    public dialogRef: MatDialogRef<CheckoutDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.carts = [...data];

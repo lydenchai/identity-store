@@ -1,0 +1,41 @@
+.card-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 15px;
+  height: auto;
+  border-radius: 8px !important;
+  border: 0.5px solid #ececec;
+  background: #fdfdfd;
+  box-shadow: 0 10px 10px rgba(218, 218, 218, 0.429);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn {
+  width: 90%;
+  height: 38px;
+  cursor: pointer;
+  margin: 0 auto;
+  background: #37a4ec;
+  color: #ffff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #0d90e7;
+  }
+}

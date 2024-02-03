@@ -1,74 +1,17 @@
-<div class="product-content">
+<div class="sub-content">
   <div class="cards">
     <div class="card-item" *ngFor="let product of products">
-      <div class="card-body">
-        <img
-          class="card-img cursor-pointer"
-          src="{{ product?.image }}"
-          alt=""
-          [routerLink]="product.id"
-        />
-        <div class="grid w-full gap-[10px] p-[5%]">
-          <div
-            [routerLink]="product.id"
-            class="max-w-full cursor-pointer overflow-hidden whitespace-nowrap"
-          >
-            <div
-              class="md:text[16px] text-ellipsis text-[20px] font-medium md:h-auto"
-            >
-              {{ product?.title }}
-            </div>
-            <div class="card-text md:text[14px] text-[16px]">
-              {{ product?.category }}
-            </div>
-            <div class="card-text md:text[14px] text-[16px]">
-              Price: ${{ product?.price }}
-            </div>
-          </div>
-        </div>
-        <button
-          mat-raised-button
-          class="btn text-[16px] font-medium"
-          (click)="onAddToCart(product)"
-        >
-          <mat-icon class="me-2">local_grocery_store</mat-icon> Add to Cart
-        </button>
-      </div>
+      <app-product-card
+        class="w-full"
+        [product]="product"
+        (addToCartChanged)="onAddToCart(product)"
+      ></app-product-card>
     </div>
   </div>
   <div class="cart">
-    <h2 class="text-[24px] font-medium">Your Cart</h2>
-    <p *ngIf="carts.length < 1" class="text-[16px]">Your cart is empty.</p>
-    <div *ngFor="let item of carts; let i = index">
-      <div class="flex w-full items-center justify-between">
-        <div
-          class="flex max-w-[85%] items-center overflow-hidden whitespace-nowrap text-[16px]"
-        >
-          {{ i + 1 }} -
-          <div class="text-ellipsis">{{ item?.title }}</div>
-          - ${{ item?.price }}
-        </div>
-        <button
-          class="remove-btn flex items-center justify-center rounded-full bg-red-500 text-[20px] text-white"
-          (click)="onRemoveFromCart(i)"
-        >
-          <mat-icon>remove</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="flex w-full justify-between font-bold">
-      <div class="text-[16px]">Total:</div>
-      <div class="text-[16px]">
-        ${{ calculateTotalPrice() | number: "1.1-2" }}
-      </div>
-    </div>
-    <button
-      mat-raised-button
-      [disabled]="carts.length < 1"
-      class="checkout-btn text-[16px] font-medium"
-      (click)="onCheckout()"
-    >
-      Checkout
-    </button>
+    <app-cart
+      [carts]="carts"
+      (onRemoveCart)="onRemoveFromCart($event)"
+    ></app-cart>
   </div>
 </div>

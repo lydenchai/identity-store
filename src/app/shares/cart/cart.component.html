@@ -1,0 +1,35 @@
+<div class="cart-body">
+  <h2 class="text-[24px] font-medium">Your Cart</h2>
+  <p *ngIf="carts.length < 1" class="text-[16px]">Your cart is empty.</p>
+  <div *ngFor="let item of carts; let i = index">
+    <div class="flex w-full items-center justify-between">
+      <div
+        class="flex max-w-[85%] items-center overflow-hidden whitespace-nowrap text-[16px]"
+      >
+        {{ i + 1 }} -
+        <div class="mx-1 text-ellipsis">{{ item?.title }}</div>
+        - ${{ item?.price }}
+      </div>
+      <button
+        class="remove-btn flex items-center justify-center rounded-full bg-red-500 text-[20px] text-white"
+        (click)="onRemoveFromCart(i)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="flex w-full justify-between font-bold">
+    <div class="text-[16px]">Total price:</div>
+    <div class="text-[16px]">
+      ${{ calculateTotalPrice() | number: "1.1-2" }}
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    [disabled]="carts.length < 1"
+    class="checkout-btn text-[16px] font-medium"
+    (click)="onCheckout()"
+  >
+    Checkout
+  </button>
+</div>

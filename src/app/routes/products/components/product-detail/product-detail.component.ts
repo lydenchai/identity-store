@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,22 +10,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent {
-  product: any;
+  product?: Product;
+
   constructor(
-    private route: ActivatedRoute,
     private _location: Location,
-    private productService: ProductService,
+    private _route: ActivatedRoute,
+    private _productService: ProductService,
   ) {
-    const product_id = this.route.snapshot.paramMap.get('id');
+    const product_id = this._route.snapshot.paramMap.get('id');
     this.getProduct(product_id);
   }
+
   onBack() {
     this._location.back();
   }
 
   async getProduct(_id: any) {
     try {
-      const res: any = await this.productService.getProduct(_id).toPromise();
+      const res: any = await this._productService.getProduct(_id).toPromise();
       if (res) {
         this.product = res;
       }
