@@ -35,7 +35,7 @@ export class ContainerComponent implements OnInit {
     }
   }
 
-  async changeLanguagePreference(lang: string) {
+  changeLanguagePreference(lang: string) {
     const currentLanguage = this.translateService.currentLang;
     if (currentLanguage !== lang) {
       this.translateService.use(lang);
